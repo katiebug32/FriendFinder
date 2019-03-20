@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Friend Finder Survey</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+  <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css"> -->
+  <!-- <script src="main.js"></script> -->
+</head>
+
+<body>
+  <!-- Modal -->
+  <div class="modal fade" id="friendModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="friendModalLabel">Your FriendFinder Match Is: </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <h4><span id="match-name"></span></h4>
+          <img src="" id="match-img">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <nav class="navbar navbar-light" style="text-align: center; background: darkcyan;">
+    <a class="navbar-brand mx-auto" style="font-size:2.5rem" href="/survey"><i
+        class="fas fa-user-friends"></i>&nbsp;&nbsp;FriendFinder&nbsp;&nbsp; <br />&nbsp;Survey</a>
+  </nav>
+  <div class="container">
+
+    <br>
+    <h2>About You</h2>
+
+    <hr>
+    <form>
+      <h5>Name (Required)</h5>
+      <input type="text" id="name" class="form-control" required="">
+
+      <h5>Link to Photo Image (Required)</h5>
+      <input type="text" id="photo" class="form-control" required="">
+
+
+      <br>
+
+      <h2>Survey Questions</h2>
+      <hr>
+
+      <div class="input-group mb-3">
+        <div class="form-group">
+          <h4>Question 1:</h4>
+          <label for="exampleFormControlSelect2">Your boss surprises you with a week off. What will you
+            do?</label>
+          <select id="q1" class="custom-select custom-select-md mb-3">
+            <!-- <select multiple class="form-control" id="exampleFormControlSelect2"> -->
+            <option selected>I would...</option>
+            <option value="1">1) Head to the beach.</option>
+            <option value="2">2) Head to the mountains.</option>
+            <option value="3">3) Stay home in your pj's and watch movies.</option>
+            <option value="4">4) Volunteer at your local church/animal shelter/food pantry/etc.</option>
+            <option value="5">5) Work on your favorite hobby/craft.</option>
+          </select>
+          <h4>Question 2:</h4>
+          <label for="exampleFormControlSelect2">What is one animal you just can't live without?</label>
+          <select id="q2" class="custom-select custom-select-md mb-3">
+            <option selected>If I had to choose one, it would be...</option>
+            <option value="1">1) Cats</option>
+            <option value="2">2) Dogs</option>
+            <option value="3">3) Chickens</option>
+            <option value="4">4) Reptiles</option>
+            <option value="5">5) Rodents</option>
+          </select>
+          <h4>Question 3:</h4>
+          <label for="exampleFormControlSelect2">If we were going out to eat, what type of food is your
+            fave?</label>
+          <select id="q3" class="custom-select custom-select-md mb-3">
+            <option selected>Let's go out for...</option>
+            <option value="1">1) Noodles </option>
+            <option value="2">2) Tacos </option>
+            <option value="3">3) Ramen</option>
+            <option value="4">4) Burgers </option>
+            <option value="5">5) Veggie bowls</option>
+          </select>
+          <h4>Question 4:</h4>
+          <label for="exampleFormControlSelect2">What's in your Spotify playlist?</label>
+          <select id="q4" class="custom-select custom-select-md mb-3">
+            <option selected>I'm loving...</option>
+            <option value="1">1) Today's Top Hits</option>
+            <option value="2">2) Hot Country</option>
+            <option value="3">3) Rock This</option>
+            <option value="4">4) Coffeehouse Collection</option>
+            <option value="5">5) ..What's Spotify??</option>
+          </select>
+          <h4>Question 5:</h4>
+          <label for="exampleFormControlSelect2">TGIF...what can I pour for you?</label>
+          <select id="q5" class="custom-select custom-select-md mb-3">
+            <option selected>Somebody, bring me a...</option>
+            <option value="1">1) Beer</option>
+            <option value="2">2) Margarita</option>
+            <option value="3">3) Water with lemon</option>
+            <option value="4">4) Glass of wine</option>
+            <option value="5">5) Moscow Mule</option>
+          </select>
+          <h4>Question 6:</h4>
+          <label for="exampleFormControlSelect2">What's the most important thing for a friendship to be
+            successful?</label>
+          <select id="q6" class="custom-select custom-select-md mb-3">
+            <option selected>Most importantly, a true friend ...</option>
+            <option value="1">1) is always honest.</option>
+            <option value="2">2) always has your back.</option>
+            <option value="3">3) brings tons of fun.</option>
+            <option value="4">4) makes you laugh.</option>
+            <option value="5">5) is always lookin' good.</option>
+          </select>
+          <h4>Question 7:</h4>
+          <label for="exampleFormControlSelect2">What does a best-friendship look like to you?</label>
+          <select id="q7" class="custom-select custom-select-md mb-3">
+            <option selected>A bff is someone who...</option>
+            <option value="1">1) you call or see every day, no matter what.</option>
+            <option value="2">2) you don't see often but catch up with at monthly night-outs.</option>
+            <option value="3">3) you met online but you chat with all the time.</option>
+            <option value="4">4) is like family - literally.</option>
+            <option value="5">5) may not exist, because true friends are hard to find.</option>
+          </select>
+          <h4>Question 8:</h4>
+          <label for="exampleFormControlSelect2">What is the most annoying habit a friend could have?</label>
+          <select id="q8" class="custom-select custom-select-md mb-3">
+            <option selected>Please don't...</option>
+            <option value="1">1) chew loudly.</option>
+            <option value="2">2) interupt me all the time.</option>
+            <option value="3">3) leave my house a mess.</option>
+            <option value="4">4) eat all my food and drinks.</option>
+            <option value="5">5) flake out on our plans.</option>
+          </select>
+          <h4>Question 9:</h4>
+          <label for="exampleFormControlSelect2">What is your love language?</label>
+          <select id="q9" class="custom-select custom-select-md mb-3">
+            <option selected>I'm all about...</option>
+            <option value="1">1) Words Of Affirmation (Tell me I'm awesome and sexy."</option>
+            <option value="2">2) Acts Of Service (Do something nice and helful for me.)</option>
+            <option value="3">3) Receiving Gifts (Ooh, is that for me?).</option>
+            <option value="4">4) Quality Time (Let's hang out!)</option>
+            <option value="5">5) Physical Touch (Yes, I'd love a back rub.)</option>
+          </select>
+          <h4>Question 10:</h4>
+          <label for="exampleFormControlSelect2">What is most important in life?</label>
+          <select id="q10" class="custom-select custom-select-md mb-3">
+            <option selected>Top priority is...</option>
+            <option value="1">1) Career</option>
+            <option value="2">2) Family</option>
+            <option value="3">3) Friendship</option>
+            <option value="4">4) Faith</option>
+            <option value="5">5) Myself</option>
+          </select>
+          <button class="btn" style="background: darkcyan; font-size:1.5rem" type="submit" id="submit">Submit Survey
+            Answers</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+
+  <!-- <script src="https://code.jquery.com/jquery.js"></script> -->
+  <script type="text/javascript">
+    $('#myModal').modal('hide');
+    // Capture the form inputs
+    $("#submit").on("click", function (event) {
+      event.preventDefault();
+
+      // Form validation
+      function validateForm() {
+        var isValid = true;
+        $(".custom-select").each(function () {
+          if ($(this).val() === "") {
+            isValid = false;
+          }
+        });
+
+        $("option").each(function () {
+
+          if ($(this).val() === "") {
+            isValid = false;
+          }
+        });
+        return isValid;
+      }
+
+      // If all required fields are filled
+      if (validateForm()) {
+        // Create an object for the user"s data
+        var friendData = {
+          name: $("#name").val(),
+          photo: $("#photo").val(),
+          scores: [
+            parseInt($("#q1").val()),
+            parseInt($("#q2").val()),
+            parseInt($("#q3").val()),
+            parseInt($("#q4").val()),
+            parseInt($("#q5").val()),
+            parseInt($("#q6").val()),
+            parseInt($("#q7").val()),
+            parseInt($("#q8").val()),
+            parseInt($("#q9").val()),
+            parseInt($("#q10").val())
+          ]
+        };
+        console.log(friendData);
+        // AJAX post the data to the friends API.
+        $.post("/api/friends", friendData, function (data) {
+
+          // Grab the result from the AJAX post so that the best match's name and photo are displayed.
+          $("#match-name").text(data.name);
+          $("#match-img").attr("src", data.photo);
+
+          // Show the modal with the best match
+          $("#friendModal").modal("toggle");
+
+        });
+      } else {
+        alert("Please fill out all fields before submitting!");
+      }
+    });
+  </script>
+
+
+</body>
+
+</html>
