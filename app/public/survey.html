@@ -6,9 +6,6 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Friend Finder Survey</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="https://code.jquery.com/jquery.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
@@ -20,7 +17,7 @@
 
 <body>
   <!-- Modal -->
-  <div class="modal fade" id="friendModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="friendModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -32,7 +29,7 @@
         </div>
         <div class="modal-body">
           <h4><span id="match-name"></span></h4>
-          <img src="" id="match-img">
+          <img id="match-img" src="" alt="">
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -52,7 +49,7 @@
     <h2>About You</h2>
 
     <hr>
-    <form>
+    <form id="survey">
       <h5>Name (Required)</h5>
       <input type="text" id="name" class="form-control" required="">
 
@@ -179,9 +176,12 @@
   </div>
 
 
-  <!-- <script src="https://code.jquery.com/jquery.js"></script> -->
-  <script type="text/javascript">
-    $('#myModal').modal('hide');
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  
+  <script>
     // Capture the form inputs
     $("#submit").on("click", function (event) {
       event.preventDefault();
@@ -232,7 +232,9 @@
           $("#match-img").attr("src", data.photo);
 
           // Show the modal with the best match
-          $("#friendModal").modal("toggle");
+          $('#myModal').modal('toggle');
+          console.log("Modal script read.")
+          $("#survey")[0].reset();
 
         });
       } else {
