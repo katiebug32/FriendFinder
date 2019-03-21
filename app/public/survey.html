@@ -11,8 +11,6 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
     integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
-  <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css"> -->
-  <!-- <script src="main.js"></script> -->
 </head>
 
 <body>
@@ -38,7 +36,7 @@
     </div>
   </div>
 
-
+  <!-- Navbar -->
   <nav class="navbar navbar-light" style="text-align: center; background: darkcyan;">
     <a class="navbar-brand mx-auto" style="font-size:2.5rem" href="/survey"><i
         class="fas fa-user-friends"></i>&nbsp;&nbsp;FriendFinder&nbsp;&nbsp; <br />&nbsp;Survey</a>
@@ -49,6 +47,8 @@
     <h2>About You</h2>
 
     <hr>
+
+      <!-- Survey -->
     <form id="survey">
       <h5>Name (Required)</h5>
       <input type="text" id="name" class="form-control" required="">
@@ -68,7 +68,6 @@
           <label for="exampleFormControlSelect2">Your boss surprises you with a week off. What will you
             do?</label>
           <select id="q1" class="custom-select custom-select-md mb-3">
-            <!-- <select multiple class="form-control" id="exampleFormControlSelect2"> -->
             <option selected>I would...</option>
             <option value="1">1) Head to the beach.</option>
             <option value="2">2) Head to the mountains.</option>
@@ -181,7 +180,6 @@
   </footer>
 
   <script src="https://code.jquery.com/jquery.js"></script>
-  <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   
@@ -200,7 +198,6 @@
         });
 
         $("option").each(function () {
-
           if ($(this).val() === "") {
             isValid = false;
           }
@@ -227,15 +224,15 @@
             parseInt($("#q10").val())
           ]
         };
-        console.log(friendData);
+        // console.log(friendData);
         // AJAX post the data to the friends API.
         $.post("/api/friends", friendData, function (data) {
 
-          // Grab the result from the AJAX post so that the best match's name and photo are displayed.
+          //post response sent back with best match - name and photo are displayed.
           $("#match-name").text(data.name);
           $("#match-img").attr("src", data.photo);
 
-          // Show the modal with the best match
+          // Display best match in modal
           $('#myModal').modal('toggle');
           console.log("Modal script read.")
           $("#survey")[0].reset();

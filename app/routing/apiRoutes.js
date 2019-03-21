@@ -1,47 +1,32 @@
 var friendsData = require("../data/friends");
 
 
-module.exports = function(app) {
-    app.get("/api/friends", function(req, res) {
-        res.json(friendsData);
-      });
-      
-    app.post("/api/friends", function(req, res) {
-      var newSurvey = req.body;
-      var currentLowScore = Number.MAX_SAFE_INTEGER;
-      var bestMatch = null;
-        friendsData.forEach((friend) => {
-          var scoreTotal = 0;
-          friend.scores.forEach((score, index) => {
-            scoreTotal += Math.abs(score - newSurvey.scores[index]);
-          })
-          if (scoreTotal < currentLowScore) {
-            currentLowScore = scoreTotal;
-            bestMatch = friend;
-          }
-        })
-        friendsData.push(newSurvey);
-        res.json(
-            {name: bestMatch.name,
-            photo: bestMatch.photo}
-        );
-    // Note the code here. Our "server" will respond to requests and let users know if they have a table or not.
-    // It will do this by sending out the value "true" have a table
-    // req.body is available since we're using the body parsing middleware
-    // if (tableData.length < 5) {
-    //     tableData.push(req.body);
-    //     res.json(true); 
-    // }
-    // else {
-    //     waitListData.push(req.body);
-    //     res.json(false);
-    // }
-    });
+module.exports = function (app) {
+  app.get("/api/friends", function (req, res) {
+    res.json(friendsData);
+  });
 
-    app.post("/api/clear", function(req, res) {
-        // Empty out the arrays of data while working on getting functiionality working
-        friendsData.length = [];
-    
-        res.json({ ok: true });
-      });
-    };
+  app.post("/api/friends", function (req, res) {
+    var newSurvey = req.body; //for cleaner code crunching
+    var currentLowScore = Number.MAX_SAFE_INTEGER; //start off with the least possible match score, then find closer matches as we compare
+    var bestMatch = null; //save the object that holds the best friend match as we compare
+    friendsData.forEach((friend) => {  // compare new survey entry agains each currenly stored friend
+      var scoreTotal = 0; //variable to hold the tally of the differences between survey scores
+      friend.scores.forEach((score, index) => { //compare score index against score index
+        scoreTotal += Math.abs(score - newSurvey.scores[index]); //calculate difrences and convert to positive number (no negatives)
+      })
+      if (scoreTotal < currentLowScore) { //if the tally of this friend is lower than the tally of the currently stored friend (or the safe number)
+        currentLowScore = scoreTotal;
+        bestMatch = friend; //then this becomes the best match!
+      }
+    })
+    friendsData.push(newSurvey); //finally add the new survey entry data to the api/data array
+    res.json( //send this data back to the survey html page and pop up in modal
+      {
+        name: bestMatch.name,
+        photo: bestMatch.photo
+      }
+    );
+  });
+
+};
