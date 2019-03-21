@@ -1,7 +1,7 @@
 var friendArray = [
     {
         "name":"Ahmed",
-        "photo":"https://goo.gl/images/KQwbSw",
+        "photo":"https://icons-for-free.com/free-icons/png/512/2612547.png",
         "scores":[
             5,
             1,
@@ -16,8 +16,8 @@ var friendArray = [
           ]
       },
       {
-        "name":"Mr.Tour",
-        "photo":"https://goo.gl/images/SwejzD",
+        "name":"Andrew",
+        "photo":"https://image.freepik.com/free-vector/character-guy-avatar-internet_24877-17032.jpg",
         "scores":[
             4,
             2,
@@ -33,7 +33,7 @@ var friendArray = [
       },
       {
         "name":"Gweneth",
-        "photo":"https://goo.gl/images/CtznYS",
+        "photo":"http://cdn.designbump.com/wp-content/uploads/2011/03/business-woman-character-vector-500x577.jpg",
         "scores":[
             1,
             2,
@@ -49,7 +49,7 @@ var friendArray = [
       },
       {
         "name":"Dave",
-        "photo":"https://goo.gl/images/1c59x3",
+        "photo":"https://openclipart.org/download/21847/nicubunu-Comic-characters-Bearded-guy.svg",
         "scores":[
             5,
             2,
@@ -65,7 +65,7 @@ var friendArray = [
       },
       {
         "name":"Meg",
-        "photo":"https://goo.gl/images/tyDz9d",
+        "photo":"https://edecorati.com/data/out/286/animated-image_292988583.jpg",
         "scores":[
             3,
             1,
@@ -78,6 +78,22 @@ var friendArray = [
             2,
             1
           ]
+      },
+      {
+      "name": "Katie",
+      "photo": "https://scontent-dfw5-2.xx.fbcdn.net/v/t1.0-9/33341432_10157998670103018_3928865164157255680_n.jpg?_nc_cat=109&_nc_ht=scontent-dfw5-2.xx&oh=90a196f5dac5446de067cfe247ea7936&oe=5D1287CC",
+      "scores": [
+      5,
+      1,
+      3,
+      1,
+      2,
+      4,
+      4,
+      5,
+      2,
+      2
+      ]
       }
   ];
   
